@@ -17,12 +17,20 @@ const registerUser = asyncHandler(async (req, res) => {
         email,
         password,
     });
+    const token = generateToken(user._id);
+
+    // Set cookie with the token
+    res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'Strict',
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    });
     if (user) {
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
-            token: generateToken(user._id),
         });
     } else {
         res.status(400).json({ message: 'Invalid user data' });
