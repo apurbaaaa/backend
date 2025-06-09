@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode settings (optional)
+.vscode/
+
+# Coverage reports
+coverage/
+
+# Build artifacts (if you build frontend or static files)
+dist/
+build/
+
+# Cache
+.cache/
+
+# MongoDB dump files (if you use mongodump)
+dump/
